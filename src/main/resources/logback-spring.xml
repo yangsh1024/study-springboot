@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 此xml在spring-boot-1.5.3.RELEASE.jar里 -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <!-- 开启后可以通过jmx动态控制日志级别(springboot Admin的功能) -->
+    <!--<jmxConfigurator/>-->
+
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!--日志的存放位置-->
+        <encoder>
+            <!--springboot原始日志样式-->
+            <!--            <pattern>%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(-&#45;&#45;){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>-->
+            <pattern>%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(-){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan}%5line %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>
+        </encoder>
+    </appender>
+    <!--    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+    <!--        &lt;!&ndash;日志的存放位置&ndash;&gt;-->
+    <!--        <File>./logs/house-backend.log</File>-->
+    <!--        <encoder>-->
+    <!--            <pattern>%date [%level] [%thread] [%file : %line] %msg%n</pattern>-->
+    <!--        </encoder>-->
+    <!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+    <!--            &lt;!&ndash; 添加.gz 历史日志会启用压缩 大大缩小日志文件所占空间 &ndash;&gt;-->
+    <!--            &lt;!&ndash;<fileNamePattern>/home/hfw-client/hfw_log/stdout.log.%d{yyyy-MM-dd}.log</fileNamePattern>&ndash;&gt;-->
+    <!--            <fileNamePattern>./logs/house-backend.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+    <!--            <maxHistory>365</maxHistory>&lt;!&ndash;  保留30天日志 &ndash;&gt;-->
+    <!--        </rollingPolicy>-->
+    <!--    </appender>-->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <!--        <appender-ref ref="FILE"/>-->
+    </root>
+
+    <!-- 日志输出级别 -->
+    <!--    <springProfile name="dev,prod">-->
+    <!--        <logger name="org.springframework" level="INFO" additivity="false">-->
+    <!--            <appender-ref ref="CONSOLE"/>-->
+    <!--            <appender-ref ref="FILE"/>-->
+    <!--        </logger>-->
+    <!--        <logger name="o.springframework" level="INFO" additivity="false">-->
+    <!--            <appender-ref ref="CONSOLE"/>-->
+    <!--            <appender-ref ref="FILE"/>-->
+    <!--        </logger>-->
+    <!--        <logger name="com.netflix" level="INFO" additivity="false">-->
+    <!--            <appender-ref ref="CONSOLE"/>-->
+    <!--            <appender-ref ref="FILE"/>-->
+    <!--        </logger>-->
+    <!--        <logger name="com.zyc.test" level="DEBUG" additivity="false">-->
+    <!--            <appender-ref ref="CONSOLE"/>-->
+    <!--            <appender-ref ref="FILE"/>-->
+    <!--        </logger>-->
+    <!--        <logger name="java.sql" level="DEBUG" additivity="false">-->
+    <!--            <appender-ref ref="CONSOLE"/>-->
+    <!--            <appender-ref ref="FILE"/>-->
+    <!--        </logger>-->
+    <!--        &lt;!&ndash;修改为你的项目路径&ndash;&gt;-->
+    <!--        <logger name="com.mla" level="DEBUG,INFO" additivity="false">-->
+    <!--            <appender-ref ref="CONSOLE"/>-->
+    <!--            <appender-ref ref="FILE"/>-->
+    <!--        </logger>-->
+    <!--    </springProfile>-->
+</configuration>
